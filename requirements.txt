@@ -1,6 +1,5 @@
 asgiref==3.8.1
 Django==4.2.11
-pillow==10.2.0
+pillow==8.4.0  # Updated to a more recent version
 sqlparse==0.4.4
 typing-extensions==4.10.0
-tzdata==2024.1

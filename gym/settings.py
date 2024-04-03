@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jpeu-xb4qfj#zi0!xon66q+w4)_l@o*8!)rb)4$(tkj7y%t0w6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ['.vercel.app','.now.sh']
-# ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
+# ALLOWED_HOSTS = ['.vercel.app']
 
 
 
@@ -79,16 +79,25 @@ WSGI_APPLICATION = 'gym.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'khtEykSdRtnOVciXilDQziERMCXyFSWt',
+        'HOST': 'roundhouse.proxy.rlwy.net',
+        'PORT': '24418',
     }
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -122,6 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 
+
 # static files add here
 
 STATIC_URL = '/static/'
@@ -131,9 +141,11 @@ import os
 # ]
 
 
-# # Vercel Deploy
-STATICFILES_DIRS =os.path.join(BASE_DIR,'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') 
+# Vercel Deploy
+# STATICFILES_DIRS =os.path.join(BASE_DIR,'static'),
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static') 
+
+
 
 
 # media files add
@@ -152,7 +164,8 @@ MESSAGE_TAGS={
 }
 
 
-
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 
 # Vercel Deploy

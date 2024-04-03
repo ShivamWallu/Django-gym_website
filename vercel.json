@@ -1,16 +1,20 @@
 {
-"builds": [
-  {
-    "src": "gym/wsgi.py",
-    "use": "@vercel/python",
-    "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    "version": 2,
+    "builds": [
+      {
+        "src": "gym/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize":"15mb", "runtime": "python3.9"}
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "gym/wsgi.py"
+      }
+    ]
   }
-],
-"routes": [
-  {
-    "src": "/(.*)",
-    "dest": "gym/wsgi.py"
-  }
-]
-}
-
